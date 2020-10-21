@@ -6,32 +6,6 @@ CIFAR_100_MEAN = [0.507, 0.487, 0.441]
 CIFAR_100_STD = [0.267, 0.256, 0.276]
 
 
-class MnistDataLoader(BaseDataLoader):
-    """
-    MNIST data loading demo using BaseDataLoader
-    """
-
-    def __init__(
-        self,
-        data_dir,
-        batch_size,
-        shuffle=True,
-        validation_split=0.0,
-        num_workers=1,
-        training=True,
-    ):
-        trsfm = transforms.Compose(
-            [transforms.ToTensor(), transforms.Normalize((0.1307,), (0.3081,))]
-        )
-        self.data_dir = data_dir
-        self.dataset = datasets.MNIST(
-            self.data_dir, train=training, download=True, transform=trsfm
-        )
-        super().__init__(
-            self.dataset, batch_size, shuffle, validation_split, num_workers
-        )
-
-
 class Cifar100DataLoader(BaseDataLoader):
     """
     CIFAR100 dataloader with train/val split.

@@ -1,16 +1,18 @@
 {
-    "name": "Mnist_LeNet",
+    "name": "TorchResNet34_CIFAR100",
     "n_gpu": 1,
 
     "arch": {
-        "type": "MnistModel",
-        "args": {}
+        "type": "TorchResnet34",
+        "args": {
+            "num_classes": 100
+        }
     },
     "data_loader": {
-        "type": "MnistDataLoader",
+        "type": "Cifar100DataLoader",
         "args":{
             "data_dir": "data/",
-            "batch_size": 128,
+            "batch_size": 32,
             "shuffle": true,
             "validation_split": 0.1,
             "num_workers": 2
@@ -19,12 +21,12 @@
     "optimizer": {
         "type": "Adam",
         "args":{
-            "lr": 0.001,
+            "lr": 0.0001,
             "weight_decay": 0,
             "amsgrad": true
         }
     },
-    "loss": "nll_loss",
+    "loss": "cross_entropy",
     "metrics": [
         "accuracy", "top_k_acc"
     ],
@@ -36,7 +38,7 @@
         }
     },
     "trainer": {
-        "epochs": 100,
+        "epochs": 10,
 
         "save_dir": "saved/",
         "save_period": 1,
