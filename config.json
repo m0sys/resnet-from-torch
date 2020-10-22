@@ -1,9 +1,9 @@
 {
-    "name": "TorchResNet34_CIFAR100",
+    "name": "ResNet50_CIFAR100",
     "n_gpu": 1,
 
     "arch": {
-        "type": "TorchResnet34",
+        "type": "Resnet50",
         "args": {
             "num_classes": 100
         }
